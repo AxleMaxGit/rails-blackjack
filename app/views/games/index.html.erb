@@ -1,0 +1,52 @@
+<h1>Blackjack</h1>
+
+<%= link_to 'New Game', new_game_path %>
+
+<br /><br /><br />
+
+<table>
+  <thead>
+    <tr>
+      <th>Game #</th>
+      <th>Players</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @games.each do |g| %>
+      <tr>
+        <td><%= g.id %></td>
+        <td>
+          <% @game_players.where(game_id: g.id).each do |p| %>
+            <%= @allplayers.find(p.player_id).name %>
+          <% end %>
+        </td>
+        <td><%= link_to 'Show', game_path(g) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br /><br /><br />
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Suit</th>
+      <th>Card Value</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @base_deck.each do |card| %>
+      <tr>
+        <td><%= card.cardrank %></td>
+        <td><%= card.cardsuit %></td>
+        <td><%= card.cardvalue %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Blackjack::Application.config.secret_key_base = 'ae5e4c311b069f4e9a4cd08427bc94172d8a6880e2350af6354f7f52c4a3571d63335e6e677bc53794c8aa02dca25400f67086fe74e86a39e17b45a5c2aa41e9'
+RailsBj::Application.config.secret_key_base = '91e0cbc94d61617c6007ff08802a8fb27f98b78ea7c3eed58157f6088d6cbaef34d0beaa74682a66c32c097ce885c197364b000b995a18622f2b92f38b2001fe'

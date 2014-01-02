@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Blackjack::Application.load_tasks
+RailsBj::Application.load_tasks

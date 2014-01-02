@@ -1,0 +1,45 @@
+<h1>Game <%= params[:id] %></h1>
+
+<h4> <%= link_to 'Return to Games Index', games_path %> </h4>
+
+<!--iterate through the players of this round -->
+<% @current_game_players.each_with_index do |player, index| %>
+	
+
+	<p>Player <%= index.to_i + 1 %> is <%= @allplayers.find(player.player_id).name %>. Player ID (<%= player.player_id %>).</p>
+	
+	<!--show each players cards -->
+	<% @hand_total = 0 %>
+	<% @hands.where(player_id: player.player_id).each do |card| %>
+		
+		<!--Show the cardrank from the base deck using the gamedeck_id from this card as a param-->
+		<p><%= @base_deck.where(id: (@current_game_deck.where(id: card.gamedeck_id).first.basedeck_card_id)).first.cardrank %>
+		
+		<!--Show the cardsuit from the base deck using the gamedeck_id from this card as a param-->
+		 of <%= @base_deck.where(id: (@current_game_deck.where(id: card.gamedeck_id).first.basedeck_card_id)).first.cardsuit %>s</p>
+		
+		<!-- calculate the running total --> 
+		<% @hand_total += @base_deck.where(id: (@current_game_deck.where(id: card.gamedeck_id).first.basedeck_card_id)).first.cardvalue %>
+
+	<% end %>
+
+	 <p>Hand total is <%= @hand_total %></p>
+
+<% end %>
+
+<br /><hr /><br />
+<%= @hands.inspect %>
+
+
+<br /><br /><hr />
+
+
+<!--debug the current game deck -->
+<!--
+<% @current_game_deck.each do |d| %>
+	<p><%= d.inspect %></p>
+<% end %>
+ -->
+
+
+
