@@ -1,0 +1,28 @@
+<h1>Black Jack</h1>
+
+<% @game1.players.each do |p| %>
+	<p><span> <%= p.name %> has </span>
+		<% p.hand.cards.each do |c| %>
+			<span> <%= c.rank %> of </span>
+			<span> <%= c.suit %>,  </span>
+		<% end %>	
+	<span> Total: <%= p.hand.total ; %> </span>
+	<span> <%= link_to "Hit", blackjack_path %> </span>
+	<span> <%= link_to "Stay", blackjack_path %> </span>
+	</p>
+<% end %>
+
+<hr />
+
+<span><%= @game1.dealer.first.name %> shows the </span>
+<span><%= @game1.dealer.first.hand.cards.first.rank %> of </span>
+<span><%= @game1.dealer.first.hand.cards.first.suit %>s. </span>
+
+<!--\
+	Deck debugging code
+	<% @game1.deck.cards.each do |c| %>
+		<span> <%= c.rank %> of <%= c.suit %> ; </span>
+	<% end %>
+-->
+
+<p>There are <%= @game1.deck.cards.length %> cards remaining.</p>
